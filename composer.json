@@ -1,0 +1,16 @@
+{
+    "name": "muhamadayeshaaulia/yesha",
+    "description": "Framework PHP lengkap dengan cita rasa Indonesia.",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.0",
+        "vlucas/phpdotenv": "^5.5",
+        "muhamadayeshaaulia/yesha-framework": "dev-main"
+    },
+    "autoload": {
+    "psr-4": {
+        "App\\": "app/"
+    }
+}
+    }

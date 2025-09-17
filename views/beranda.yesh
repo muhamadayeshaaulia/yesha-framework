@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ $judul }}</title>
+    <style>
+        body { background-color: #f4f7f6; color: #333; font-family: 'Helvetica Neue', Arial, sans-serif; text-align: center; margin-top: 100px; }
+        .container { background-color: white; padding: 40px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; margin: 0; }
+        p { color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ $judul }}</h1>
+        <p>{{ $deskripsi }}</p>
+    </div>
+</body>
+</html>

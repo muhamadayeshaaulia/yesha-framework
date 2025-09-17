@@ -1,0 +1,11 @@
+# File dan folder yang diabaikan oleh Git
+
+# Dependensi Composer
+/vendor
+
+# File environment
+.env
+
+# File sistem operasi
+.DS_Store
+Thumbs.db

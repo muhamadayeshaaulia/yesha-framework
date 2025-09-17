@@ -1,0 +1,68 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__); // Path-nya __DIR__ karena file yesha ada di root
+$dotenv->load();
+
+use App\Commands\ServeCommand;
+use App\Commands\BuatControllerCommand;
+use App\Commands\BuatMigrasiCommand; // <-- PASTIKAN BARIS INI ADA
+use App\Commands\MigrateCommand;  
+use App\Commands\MigrateResetCommand;   // <-- TAMBAHKAN INI
+use App\Commands\MigrateRefreshCommand; 
+use App\Commands\BuatModelCommand;  
+// Daftarkan semua kelas perintah baru di sini
+
+class AplikasiConsole {
+    // Array untuk mendaftarkan semua kelas perintah yang tersedia
+    protected $perintah = [];
+
+    public function __construct() {
+        // Daftarkan semua perintah yang ada
+        $this->tambahPerintah(new ServeCommand());
+        $this->tambahPerintah(new BuatControllerCommand());
+        $this->tambahPerintah(new BuatModelCommand());
+        $this->tambahPerintah(new BuatMigrasiCommand()); // <-- Tambahkan ini
+        $this->tambahPerintah(new MigrateCommand()); 
+        $this->tambahPerintah(new MigrateResetCommand());   // <-- TAMBAHKAN INI
+        $this->tambahPerintah(new MigrateRefreshCommand()); 
+        // $this->tambahPerintah(new PerintahBaruLainnya());
+    }
+
+    protected function tambahPerintah($perintah) {
+        $this->perintah[$perintah->nama] = $perintah;
+    }
+
+    public function jalankan($argv) {
+        $namaPerintah = $argv[1] ?? 'list'; // Default ke 'list' jika tidak ada perintah
+        $argumen = array_slice($argv, 2);
+
+        if ($namaPerintah === 'list') {
+            $this->tampilkanDaftarPerintah();
+            return;
+        }
+
+        if (isset($this->perintah[$namaPerintah])) {
+            $this->perintah[$namaPerintah]->handle($argumen);
+        } else {
+            echo "Error: Perintah '{$namaPerintah}' tidak ditemukan.\n";
+            $this->tampilkanDaftarPerintah();
+        }
+    }
+
+    protected function tampilkanDaftarPerintah() {
+        echo "Yesha Framework Console\n\n";
+        echo "Penggunaan:\n";
+        echo "  php yesha <perintah> [argumen]\n\n";
+        echo "Perintah yang tersedia:\n";
+        foreach ($this->perintah as $perintah) {
+            printf("  %-20s %s\n", $perintah->nama, $perintah->deskripsi);
+        }
+    }
+}
+
+// Inisialisasi dan jalankan aplikasi console
+$app = new AplikasiConsole();
+$app->jalankan($argv);
