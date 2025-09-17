@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e680b9a64c3b40a921d4680d6356d46",
+    "content-hash": "209cb033b25947ebf4d6357eeb390143",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -67,6 +67,41 @@
                 }
             ],
             "time": "2024-07-20T21:45:45+00:00"
+        },
+        {
+            "name": "muhamadayeshaaulia/yesha-core",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/muhamadayeshaaulia/yesha-core.git",
+                "reference": "f93d26c418374c515d0a178a14adc8d02ae236df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/muhamadayeshaaulia/yesha-core/zipball/f93d26c418374c515d0a178a14adc8d02ae236df",
+                "reference": "f93d26c418374c515d0a178a14adc8d02ae236df",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Inti\\": "inti/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Inti dari Yesha Framework.",
+            "support": {
+                "issues": "https://github.com/muhamadayeshaaulia/yesha-core/issues",
+                "source": "https://github.com/muhamadayeshaaulia/yesha-core/tree/main"
+            },
+            "time": "2025-09-17T03:19:04+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -483,7 +518,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "muhamadayeshaaulia/yesha-core": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
